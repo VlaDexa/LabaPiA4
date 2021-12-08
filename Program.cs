@@ -72,12 +72,8 @@ namespace LabaPiA4
             {
                 int max = matrix[0, i];
                 for (int j = 0; j < m; j++)
-                {
                     if (max < matrix[j, i])
-                    {
                         max = matrix[j, i];
-                    }
-                }
                 result[i] = max;
             }
 
@@ -101,13 +97,11 @@ namespace LabaPiA4
                 double sum = 0;
                 double count = 0;
                 for (int j = 0; j < n; j++)
-                {
                     if (matrix[i, j] >= 0)
                     {
                         sum += matrix[i, j];
                         count++;
                     }
-                }
                 result[i] = count != 0 ? sum / count : 0;
             }
 
@@ -132,14 +126,12 @@ namespace LabaPiA4
             int[,] result = new int[3 * n, n];
 
             for (int i = 0; i < n; i++)
-            {
                 for (int j = 0; j < n; j++)
                 {
                     result[i, j] = initual_matrix_0[i, j];
                     result[i + n, j] = initual_matrix_1[i, j];
                     result[i + n * 2, j] = initual_matrix_2[i, j];
                 }
-            }
 
             Console.WriteLine("Матрица составленая из 3 матриц - ");
             PrintMatrix(result);
@@ -161,13 +153,11 @@ namespace LabaPiA4
             int max = matrix[0, 0];
             int index = 0;
             for (int i = 1; i < n; i++)
-            {
                 if (max < matrix[i, i])
                 {
                     max = matrix[i, i];
                     index = i;
                 }
-            }
 
             for (int i = 0; i < index; i++)
                 for (int j = i + 1; j < n; j++)
@@ -228,15 +218,11 @@ namespace LabaPiA4
             int[] lower_triangle = new int[n * n];
 
             for (int i = 0; i < n; i++)
-            {
                 for (int j = 0; j < n; j++)
-                {
                     if (i <= j)
                         upper_triangle[i * n + j] = matrix[i, j];
                     else
                         lower_triangle[i * n + j] = matrix[i, j];
-                }
-            }
 
             Console.WriteLine("Верхний треугольник по строкам - [{0}]", string.Join(", ", upper_triangle));
             Console.WriteLine("Нижний треугольник по строкам - [{0}]", string.Join(", ", lower_triangle));
@@ -260,9 +246,7 @@ namespace LabaPiA4
             int[] lower_triangle_2 = new int[n * n];
 
             for (int i = 0; i < n; i++)
-            {
                 for (int j = 0; j < n; j++)
-                {
                     if (i <= j)
                     {
                         upper_triangle_1[i * n + j] = matrix_1[i * n + j];
@@ -273,19 +257,13 @@ namespace LabaPiA4
                         lower_triangle_1[i * n + j] = matrix_1[i * n + j];
                         lower_triangle_2[i * n + j] = matrix_2[i * n + j];
                     }
-                }
-            }
 
             int[] result = new int[n * n];
 
             for (int i = 0; i < n; i++)
-            {
                 for (int j = 0; j < n; j++)
-                {
                     result[i * n + j] = upper_triangle_1[i * n + j] * upper_triangle_2[i * n + j] +
                                        lower_triangle_1[i * n + j] * lower_triangle_2[i * n + j];
-                }
-            }
 
             Console.WriteLine("Результат - [{0}]", string.Join(", ", result));
         }
@@ -304,10 +282,8 @@ namespace LabaPiA4
             {
                 positive_count[i] = (i, 0);
                 for (int j = 0; j < 7; j++)
-                {
                     if (matrix[i, j] >= 0)
                         positive_count[i].Item2++;
-                }
             }
 
             Array.Sort(positive_count, (a, b) => b.Item2.CompareTo(a.Item2));
@@ -368,12 +344,8 @@ namespace LabaPiA4
             var m = matrix.GetLength(1);
             int[] array = new int[n * m];
             for (int i = 0; i < n; ++i)
-            {
                 for (int j = 0; j < m; ++j)
-                {
                     array[i * m + j] = matrix[i, j];
-                }
-            }
             return array;
         }
 
