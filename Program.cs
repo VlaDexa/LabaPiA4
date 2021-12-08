@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Diagnostics.Contracts;
 
 namespace LabaPiA4
 {
@@ -87,7 +85,7 @@ namespace LabaPiA4
         }
 
         /// Сформировать одномерный массив из средних значений среди положительных элементов строк матрицы А размера 4 × 6.
-        static private int[] FirstEight()
+        static private double[] FirstEight()
         {
             const int n = 4;
             const int m = 6;
@@ -96,12 +94,12 @@ namespace LabaPiA4
             Console.WriteLine("Исходная матрица - ");
             PrintMatrix(matrix);
 
-            int[] result = new int[m];
+            double[] result = new double[m];
 
             for (int i = 0; i < m; i++)
             {
-                int sum = 0;
-                int count = 0;
+                double sum = 0;
+                double count = 0;
                 for (int j = 0; j < n; j++)
                 {
                     if (matrix[i, j] >= 0)
@@ -110,7 +108,7 @@ namespace LabaPiA4
                         count++;
                     }
                 }
-                result[i] = sum / count;
+                result[i] = count != 0 ? sum / count : 0;
             }
 
             return result;
@@ -349,6 +347,17 @@ namespace LabaPiA4
         }
 
         /// <summary>
+        /// Выводит в консоль сначала сообщение start, потом матрицу
+        /// </summary>
+        /// <param name="start">Сообщение с которого надо начать вывод</param>
+        /// <param name="matrix">Матрица, которую необходимо вывести</param>
+        static public void PrintMatrix(string start, int[,] matrix)
+        {
+            Console.Write(start);
+            PrintMatrix(matrix);
+        }
+
+        /// <summary>
         /// Превращает матрицу в одномерный массив
         /// </summary>
         /// <param name="matrix">Матрица, которую необходимо превратить</param>
@@ -366,17 +375,6 @@ namespace LabaPiA4
                 }
             }
             return array;
-        }
-
-        /// <summary>
-        /// Выводит в консоль сначала сообщение start, потом матрицу
-        /// </summary>
-        /// <param name="start">Сообщение с которого надо начать вывод</param>
-        /// <param name="matrix">Матрица, которую необходимо вывести</param>
-        static public void PrintMatrix(string start, int[,] matrix)
-        {
-            Console.Write(start);
-            PrintMatrix(matrix);
         }
 
         static private readonly Random random = new Random();
